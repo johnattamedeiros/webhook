@@ -19,10 +19,7 @@ app.post('/webhook/app', (req, res) => {
     const signature = req.headers['x-hub-signature-256'];
     const payload = req.body;
 
-    console.log(signature);
-    console.log(GITHUB_TOKEN);
-
-    if (!signature || signature !== `sha256=${GITHUB_TOKEN}`) {
+    if (!signature || signature !== GITHUB_TOKEN) {
         return res.status(401).send('Invalid token');
     }
 
