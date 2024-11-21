@@ -11,6 +11,10 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
+app.get('/webhook', (req, res) => {
+    res.status(200).send({ status: 'Responding' });
+});
+
 app.post('/webhook/app', (req, res) => {
     const signature = req.headers['x-hub-signature-256'];
     const payload = req.body;
